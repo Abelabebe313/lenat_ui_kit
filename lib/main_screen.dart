@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:hugeicons/hugeicons.dart';
+import 'package:lenat_ui_kit/consult/consult_page.dart';
 import 'package:lenat_ui_kit/market/market_screen.dart';
 import 'package:lenat_ui_kit/media/media_screen.dart';
 import 'package:lenat_ui_kit/profile/profile_screen.dart';
-
 
 class MainScreen extends StatefulWidget {
   const MainScreen({super.key});
@@ -18,7 +18,7 @@ class _MainScreenState extends State<MainScreen> {
   final List<Widget> _pages = const [
     Center(child: Text('Home Page')),
     MediaPage(),
-    Center(child: Text('Consult Page')),
+    ConsultPage(),
     MarketPage(),
     ProfilePage(),
   ];
@@ -71,7 +71,8 @@ class _MainScreenState extends State<MainScreen> {
                 ],
               ),
               child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 12),
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 8, vertical: 12),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: List.generate(_icons.length, (index) {
