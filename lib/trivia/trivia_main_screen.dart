@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hugeicons/hugeicons.dart';
 import 'package:lenat_ui_kit/common/colors.dart';
+import 'package:lenat_ui_kit/trivia/trivia_game_screen.dart';
 
 class TriviaPage extends StatefulWidget {
   const TriviaPage({super.key});
@@ -144,7 +145,27 @@ class _TriviaPageState extends State<TriviaPage> {
               ),
               const SizedBox(height: 8),
               ElevatedButton(
-                onPressed: () {},
+                onPressed: () {
+                  if (status) {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) {
+                      return TriviaGamePage();
+                    }));
+                  } else {
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      SnackBar(
+                        content: const Text(
+                          "ይቅርታ ይህ ጥያቄ አልተከፈተም",
+                          style: TextStyle(
+                            fontFamily: 'NotoSansEthiopic',
+                            fontSize: 14,
+                          ),
+                        ),
+                        duration: const Duration(seconds: 2),
+                      ),
+                    );
+                  }
+                },
                 style: ElevatedButton.styleFrom(
                   backgroundColor: status ? Primary : Colors.grey,
                   shape: RoundedRectangleBorder(

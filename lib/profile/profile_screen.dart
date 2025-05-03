@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hugeicons/hugeicons.dart';
 import 'package:lenat_ui_kit/common/colors.dart';
+import 'package:lenat_ui_kit/profile/premium_screen.dart';
 
 class ProfilePage extends StatelessWidget {
   const ProfilePage({super.key});
@@ -27,16 +28,23 @@ class ProfilePage extends StatelessWidget {
           const SizedBox(height: 16),
           _buildProfileHeader(),
           const SizedBox(height: 32),
-          
-          _buildPremiumCard(),
+          GestureDetector(
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const PremiumPage(),
+                ),
+              );
+            },
+            child: _buildPremiumCard(),
+          ),
           const SizedBox(height: 32),
           _buildSectionTitle('አጠቃላይ ቅንብር'),
           _buildUserInfoList(),
-
           const SizedBox(height: 32),
           _buildSectionTitle('እርዳታ እና ድጋፍ'),
           _buildHelpCenterList(),
-          
           const SizedBox(height: 32),
           _buildLogoutButton(context),
         ],
@@ -120,7 +128,7 @@ class ProfilePage extends StatelessWidget {
         padding: const EdgeInsets.all(16),
         decoration: BoxDecoration(
           gradient: const LinearGradient(
-            colors: [Color(0xFF8BBDF4),Color(0xFF8BBDF4), Color(0xFF2688F2)],
+            colors: [Color(0xFF8BBDF4), Color(0xFF8BBDF4), Color(0xFF2688F2)],
             begin: Alignment.bottomLeft,
             end: Alignment.topCenter,
           ),
@@ -207,7 +215,7 @@ class ProfilePage extends StatelessWidget {
         children: [
           HugeIcon(
             icon: icon,
-            color:Colors.black,
+            color: Colors.black,
             size: 24.0,
           ),
           const SizedBox(width: 16),
