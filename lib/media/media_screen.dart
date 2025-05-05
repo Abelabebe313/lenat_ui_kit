@@ -42,34 +42,56 @@ class _MediaPageState extends State<MediaPage> {
           const SizedBox(width: 16),
         ],
       ),
-      body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 24.0, vertical: 16),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            const SizedBox(height: 24),
-            SizedBox(
-              height: 200,
-              child: ListView.builder(
-                scrollDirection: Axis.horizontal,
-                itemCount: 10,
-                itemBuilder: (context, index) {
-                  return _mediaCatagotyCard();
-                },
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 24.0, vertical: 16),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              const SizedBox(height: 24),
+              SizedBox(
+                height: 200,
+                child: ListView.builder(
+                  scrollDirection: Axis.horizontal,
+                  itemCount: 10,
+                  itemBuilder: (context, index) {
+                    return _mediaCatagotyCard();
+                  },
+                ),
               ),
-            ),
-            const SizedBox(height: 32),
-            const Text(
-              "ትምህርታዊ ጥያቄዎች",
-              style: TextStyle(
-                fontSize: 18,
-                fontWeight: FontWeight.bold,
-                fontFamily: 'NotoSansEthiopic',
+              const SizedBox(height: 32),
+              const Text(
+                "ትምህርታዊ ጥያቄዎች",
+                style: TextStyle(
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold,
+                  fontFamily: 'NotoSansEthiopic',
+                ),
               ),
-            ),
-            const SizedBox(height: 16),
-            _buildTriviaCard(),
-          ],
+              const SizedBox(height: 16),
+              _buildTriviaCard(),
+              const SizedBox(height: 16),
+              const Text(
+                "የተወዳጅ ወይም የተመዘገበ ሚድያ",
+                style: TextStyle(
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold,
+                  fontFamily: 'NotoSansEthiopic',
+                ),
+              ),
+              const SizedBox(height: 16),
+              SizedBox(
+                height: 200,
+                child: ListView.builder(
+                  scrollDirection: Axis.horizontal,
+                  itemCount: 10,
+                  itemBuilder: (context, index) {
+                    return _mediaFavoriteCard();
+                  },
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );
@@ -155,7 +177,7 @@ class _MediaPageState extends State<MediaPage> {
       width: 200,
       margin: const EdgeInsets.only(right: 16),
       decoration: BoxDecoration(
-        color: Colors.grey.shade300,
+        color: Color(0xFFFBFBFB),
         borderRadius: BorderRadius.circular(12),
       ),
       child: Stack(
@@ -196,6 +218,29 @@ class _MediaPageState extends State<MediaPage> {
             ),
           ),
         ],
+      ),
+    );
+  }
+
+  Widget _mediaFavoriteCard() {
+    return Container(
+      width: 200,
+      margin: const EdgeInsets.only(right: 16),
+      decoration: BoxDecoration(
+        color: Color(0xFFFBFBFB),
+        borderRadius: BorderRadius.circular(12),
+      ),
+      child: Padding(
+        padding: const EdgeInsets.all(16),
+        child: ClipRRect(
+          borderRadius: BorderRadius.circular(12),
+          child: Image.asset(
+            'assets/images/login-image.png',
+            fit: BoxFit.cover,
+            width: 200,
+            height: 200,
+          ),
+        ),
       ),
     );
   }
